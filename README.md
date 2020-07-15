@@ -19,3 +19,14 @@
 
 ### 由于安全问题在online_service模块中阿里云的accesskeyid与accesskeysecret已修改，有需要的可以根据自己的实际情况进行修改
 #### 数据库相关文件已上传至online_edu根目录sql文件下
+
+
+## 调整了 跨域问题
+- zuul 网关跨域问题解决：
+在yml 中配置：
+```yaml
+zuul:
+  sensitive-headers: Access-Control-Allow-Origin
+  ignore-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+```
+编写过滤器类： `com.online.edu.gateway.filter.GlobalCorsFilter`
